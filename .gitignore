@@ -9,7 +9,7 @@ cypress/reports/
 node_modules/
 
 # Ignore environment files
-.env
+cypress.env.json
 
 __pycache__/
 *.pyc
