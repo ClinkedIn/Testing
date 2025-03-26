@@ -2,6 +2,8 @@
 cypress/screenshots/
 cypress/videos/
 cypress/downloads/
+cypress/e2e/
+cypress/reports/
 
 # Ignore node_modules
 node_modules/
