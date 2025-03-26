@@ -8,3 +8,10 @@ node_modules/
 
 # Ignore environment files
 .env
+
+__pycache__/
+*.pyc
+*.pyo
+
+selenium/chromedriver.exe
+selenium/LICENSE.chromedriver

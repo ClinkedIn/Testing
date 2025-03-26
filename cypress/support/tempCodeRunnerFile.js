@@ -1,0 +1,1 @@
+cy.get('.nav__button-secondary').click()
