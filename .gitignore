@@ -1,0 +1,10 @@
+# Ignore Cypress output files (not needed in the repo)
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore environment files
+.env
