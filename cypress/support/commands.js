@@ -25,13 +25,15 @@ import { v4 as uuidv4 } from 'uuid';
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 Cypress.Commands.add('login', (username, password) => {
-    cy.visit('https://www.linkedin.com/home');
-    cy.get('.nav__button-secondary').click();
-    cy.get('#username').type(username, { log: false }); // Hide username in logs
-    cy.get('#password').type(password, { log: false }); // Hide password in logs
-    cy.get('.btn__primary--large').click();
+    cy.visit('http://localhost:5173/');
+    cy.get("a[class='text-blue-600 text-sm font-semibold border border-blue-600 px-4 py-2 rounded-full hover:bg-blue-100']").click();
+    cy.get("input[placeholder='Email']").type(username, { log: false }); // Hide username in logs
+    cy.get("input[placeholder='Password']").type(password, { log: false }); // Hide password in logs
+    cy.get("button[type='submit']").click();
 });
-
 Cypress.Commands.add('Generate_emails', () => {
-    return `testsignup1232+${uuidv4()}@gmail.com`;
+    const email=`testsignup+${uuidv4()}@mailinator.com`;
+    console.log(email);
+    return email
 });
+import 'cypress-file-upload';
