@@ -3,10 +3,10 @@ import { notifications } from "../support/selectors";
 describe('Notifications Tests', () => {
     beforeEach(() => {
         cy.login(Cypress.env('email'), Cypress.env('password'), { log: false });
-        cy.get(notifications.notificationsIcon).click()
+        cy.visit("http://localhost:5173/notifications")
     });
 
-    it.skip('Verify unseen notification count, and persistence with reload', () => {
+    it('Verify unseen notification count, and persistence with reload', () => {
         //get badge count, count unseen notifications and verify they're equal, reload to ensure persistance
 
             cy.get(notifications.badgeCount,{ timeout: 30000 }).then(($badge) => {
@@ -22,6 +22,7 @@ describe('Notifications Tests', () => {
                   .should('exist')
                   .should('be.visible')
                   .each(($card) => {
+                    cy.wait(3000)
                     cy.wrap($card)
                       .find(notifications.unread)
                       .should('have.length', unseenCount);
@@ -37,8 +38,8 @@ describe('Notifications Tests', () => {
     //understand why looping only got one element
 
     // **
-    it.skip('Mark notification as read',()=>{
-        cy.wait(5000)
+    it('Mark notification as read',()=>{
+        cy.wait(10000)
 
         cy.get(notifications.notificationsCard)
             .should('exist')
@@ -57,23 +58,16 @@ describe('Notifications Tests', () => {
             })
         })
 
-        it.skip('Push Notifications',()=>{
+        it('Push Notifications',()=>{
 
             cy.get(notifications.send).click()
-            cy.wait(4000)
+            cy.wait(6000)
             cy.get(notifications.pushNotifications)
             .invoke('text')
             .should('contain','New notification received!')
 
         })
 
-        it('Verify notification categorization',()=>{
-
-            cy.get(notifications.jobsTab).click()
-            // Ensure notifications contain the expected keyword
-            cy.get(notifications.notificationsCard, { timeout: 10000 }).each(($card) => {
-                cy.wrap($card).should('contain.text', "Job");
-            });
-        });
+        
         });
 

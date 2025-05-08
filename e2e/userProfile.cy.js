@@ -10,7 +10,7 @@ describe('User Profile Test Suite',()=>{
         cy.wait(3000)
     });
 
-    it.skip('Edit Name',()=>{   
+    it('Edit Name',()=>{   
 
       
         cy.get(profile.editName).click()
@@ -22,7 +22,7 @@ describe('User Profile Test Suite',()=>{
     
     })
 
-    it.skip('Edit About and Contact Info',()=>{   
+    it('Edit About and Contact Info',()=>{   
         //Edit contact info
         cy.get(profile.editAbout).click()
         cy.get(profile.aboutDescription).clear().type('New Desciption')
@@ -43,7 +43,7 @@ describe('User Profile Test Suite',()=>{
 
     })
 
-    it.skip('Edit Contact info with invalid url',()=>{  
+    it('Edit Contact info with invalid url',()=>{  
 
         cy.get(profile.editAbout).click()
         cy.get(profile.websiteURL).clear().type('https://anth@anth.com') 
@@ -53,7 +53,7 @@ describe('User Profile Test Suite',()=>{
         cy.get(profile.finalWebsite).invoke('text').should('not.have.text','https://anth@anth.com')
     })
 
-    it.skip('Add Experience with future start date',()=>{  
+    it('Add Experience with future start date',()=>{  
         cy.get(profile.addExperience).click()
         cy.get(profile.jobTitle).select('Data Scientist')
         cy.get(profile.company).select('IBM')
@@ -80,7 +80,7 @@ describe('User Profile Test Suite',()=>{
 
     })
   
-    it.skip('Add Education',()=>{ 
+    it('Add Education',()=>{ 
 
         //Add education
         cy.wait(4000)
@@ -106,7 +106,7 @@ describe('User Profile Test Suite',()=>{
 
     })
 
-    it.skip('Type skill',()=>{
+    it('Type skill',()=>{
 
         cy.get(profile.addSkills).click()
         cy.get(profile.writeSkill).type('Python')
@@ -115,7 +115,7 @@ describe('User Profile Test Suite',()=>{
 
     })
 
-    it.skip('Add an existing skill',()=>{ 
+    it('Add an existing skill',()=>{ 
         cy.get(profile.addSkills).click()
         cy.get(profile.writeSkill).type('Python')
         cy.get(profile.save).click()
@@ -123,7 +123,7 @@ describe('User Profile Test Suite',()=>{
 
     })
 
-    it.skip('Add a common skill',()=>{ 
+    it('Add a common skill',()=>{ 
 
         cy.get(profile.addSkills).click()
         cy.get(profile.commonSkill).click()

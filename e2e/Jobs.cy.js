@@ -16,7 +16,7 @@ describe('Jobs Test Suite', () => {
       });
   });
 
-  it.skip('Filter jobs by company',()=>{ 
+  it.skip('Fil.skiper jobs by company',()=>{ 
 
     cy.get(jobs.searchIndustry).type("Data Scientist{enter}");
     cy.get(jobs.filterByCompany).select("Kilback - Weber");
@@ -111,7 +111,7 @@ describe('Jobs Test Suite', () => {
       });
   });
 
-  it.skip('Apply for a job', () => { 
+  it('Apply for a job', () => { 
     cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(11) > div:nth-child(1) > div:nth-child(2) > p:nth-child(1)").click();
     cy.wait(2000);
     cy.get('.mr-4').click();
@@ -144,7 +144,7 @@ describe('Jobs Test Suite', () => {
       });
   });
 
-  it.skip('Post job',()=>{
+  it('Post job',()=>{
     cy.get(jobs.postfreeJob).click()
     cy.get(company.jobTitle).type('Lab assistant')
     cy.get(company.company).type("company edited{enter}")
@@ -195,7 +195,7 @@ describe('Jobs Test Suite', () => {
 
   })
 
-  it.skip('Accept applicant',()=>{  
+  it('Accept applicant',()=>{  
 
     cy.get(jobs.postedJobsText).click()
     cy.get(jobs.applicant).click()

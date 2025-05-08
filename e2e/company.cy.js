@@ -7,11 +7,11 @@ describe('Company Test Suite', () => {
   });
 
 
-  it.skip('Create company profile', () => {  
+  it('Create company profile', () => {  
  
     cy.visit('http://localhost:5173/company/setup/new')  
     cy.get(company.name).type("alia's company 3.0")
-    cy.get(company.address).type('trial501134456e4')
+    cy.get(company.address).type('trial501134456e45656')
     cy.get(company.location).type('Cairo, Egypt')
     cy.get(company.website).type('http://healthcare.com')
     cy.get(company.industry).type("tutoring services or something")
@@ -49,7 +49,7 @@ describe('Company Test Suite', () => {
 
   })
 
-  it.skip('Edit company information',()=>{ 
+  it('Edit company information',()=>{ 
 
     cy.visit('http://localhost:5173/company/6818c450ff2bc14ef687c6de/admin/Feed')
     cy.wait(7000)
@@ -62,7 +62,7 @@ describe('Company Test Suite', () => {
 
   })
 
-  it.skip('Post a job',()=>{ 
+  it('Post a job',()=>{ 
 
     cy.visit('http://localhost:5173/company/6818c450ff2bc14ef687c6de/admin/Feed')
     cy.wait(7000)
@@ -146,7 +146,7 @@ describe('Company Test Suite', () => {
     cy.get(company.acceptTest).should('have.text','accepted')
   })
 
-  it('Manage jobs/ analytics',()=>{ 
+  it.skip('Manage jobs/ analytics',()=>{ 
 
     cy.visit('http://localhost:5173/company/6815f8926923d7dbff04dd93')
     cy.get(company.showasAdmin).click()

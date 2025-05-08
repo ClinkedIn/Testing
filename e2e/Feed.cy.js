@@ -6,7 +6,49 @@ describe('Feed Test Suite',()=>{
         cy.wait(3000)
     });
 
-    it.skip('Create a text post with image(s)',()=>{  
+    it.skip('Edit post',()=>{
+        cy.loginLive(Cypress.env('email'), Cypress.env('password'), { log: false });
+        cy.wait(3000)
+        cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(1) > div:nth-child(3) > button:nth-child(1)').click()
+        cy.get('body div div div div div div div div li:nth-child(2)').click()
+        cy.wait(2000)
+        cy.get(".w-full.border.rounded.p-2.mb-2").type('edited')
+        cy.get(".bg-blue-600.text-white.px-4.py-1.rounded").click()
+        cy.get(':nth-child(2) > .pl-4').invoke('text').should('contain','edited')
+     })
+
+     it('save post for later',()=>{
+        const text=cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(1) > div:nth-child(3) > button:nth-child(1)').invoke('text')
+        cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(1) > div:nth-child(2) > button:nth-child(1)').click()
+        cy.get('body div div div div div div div div li:nth-child(3)').click()
+        cy.get("button[class='flex items-center text-xs text-[rgba(0,0,0,0.6)] font-semibold p-3 hover:bg-[rgba(0,0,0,0.08)] w-full text-left']").click()
+        cy.wait(3000)
+        cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(2)').should('have.text','save for later')
+
+     })
+
+     it('Repost',()=>{
+        const text=cy.get(':nth-child(2) > .pl-4').invoke('text')
+        cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(5) > button:nth-child(3)').click()
+        cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(1) > div:nth-child(2)').should('be.visible')
+        // cy.visit('https://www.lockedin-cufe.me/profile')
+        // cy.wait(3000)
+        // cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(6) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3)').should('have.text',text)
+     })
+
+     it.skip('Delete',()=>{
+        const text=cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(2)").invoke('text')
+        cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(1) > div:nth-child(2) > button:nth-child(1)').click()
+        cy.get("li[class='px-4 py-2 hover:bg-[rgba(0,0,0,0.05)] cursor-pointer flex items-center text-red-600']").click()
+        cy.on('window:confirm', (text) => {
+            return true; // Clicks "OK"
+          });
+        cy.get("body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(2)").should('not.contain',text)
+     })
+
+
+
+    it('Create a text post with image(s)',()=>{  
         const uploadedImage = 'test-images/bakery.jpg';
         const uploadedImage2 = 'test-images/bakery.jpg';
         cy.get(feed.createPost).click()
@@ -26,7 +68,7 @@ describe('Feed Test Suite',()=>{
           
     })
 
-    it.skip('Like a post',()=>{  
+    it('Like a post',()=>{  
         let initialCount;
 
         cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > ul:nth-child(3) > li:nth-child(1) > div:nth-child(1) > span:nth-child(2)')
@@ -53,7 +95,7 @@ describe('Feed Test Suite',()=>{
 
      })
 
-     it.skip('post a document',()=>{
+     it('post a document',()=>{
         const uploadeddoc = 'test-images/Web test report-Sheet1.pdf';
         cy.get(feed.createPost).click()
         cy.wait(4000)
@@ -65,7 +107,7 @@ describe('Feed Test Suite',()=>{
         cy.get('body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > article:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)').should('be.visible')
      })
 
-     it.skip('Comment on a post',()=>{  
+     it('Comment on a post',()=>{  
         let initialCount;
         const uploadedImage = 'test-images/bakery.jpg';
         cy.get(feed.commentCount)
@@ -98,7 +140,7 @@ describe('Feed Test Suite',()=>{
 
      })
 
-     it.skip('Hide Post',()=>{  
+     it('Hide Post',()=>{  
         cy.get(feed.postMenu).click()
         cy.get(feed.hidePost).click()
         cy.wait(1000)

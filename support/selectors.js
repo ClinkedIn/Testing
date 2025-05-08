@@ -164,7 +164,7 @@ export const Login={
 
 
 export const notifications={
-    "badgeCount":"body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > header:nth-child(2) > div:nth-child(1) > nav:nth-child(2) > button:nth-child(5) > div:nth-child(2)",
+    "badgeCount":"div[class='absolute -top-1 -right-1 bg-[#cb112d] text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-medium']",
     "notificationsCard":"div[class='bg-white shadow-sm rounded-lg border border-gray-300']",
     "unread":"#Mark-Read > #Notification-Click > .w-2.h-2.bg-blue-600.rounded-full.mt-2",
     "currentUnreadItem":"body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > ul:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)",
