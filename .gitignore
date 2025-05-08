@@ -1,0 +1,19 @@
+# Ignore Cypress output files (not needed in the repo)
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+cypress/e2e/
+cypress/reports/
+
+# Ignore node_modules
+node_modules/
+
+# Ignore environment files
+cypress.env.json
+
+__pycache__/
+*.pyc
+*.pyo
+
+selenium/chromedriver.exe
+selenium/LICENSE.chromedriver
